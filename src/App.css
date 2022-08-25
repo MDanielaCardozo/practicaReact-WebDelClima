@@ -39,6 +39,16 @@ body {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+.formulario button {
+    padding: 0.8rem;
+    font-size: 1rem;
+    margin-left: 1rem;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #f8f8f8ff;
+}
+
 ::placeholder {
     color: #f8f8f8ff;
 }

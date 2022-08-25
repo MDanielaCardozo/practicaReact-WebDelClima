@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import '../App.css'
 
-const Formulario = (props) => {
+const Formulario = () => {
 
     const [dato, setDato] = useState([]);
-    const [ciudad, setCiudad] = useState([]);
+    const [ciudad, setCiudad] = useState('');
 
-    const urlClima = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}appid=2469af9391e9810af6cd6231eaab30e5`;
+    const urlClima = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=2469af9391e9810af6cd6231eaab30e5`;
 
     useEffect(() => {
       consultarClima();
@@ -16,6 +16,7 @@ const Formulario = (props) => {
       const respuesta = await fetch(urlClima);
       const dato = await respuesta.json();
       console.log(dato);
+      setCiudad('');
     }
 
     
@@ -24,15 +25,15 @@ const Formulario = (props) => {
       <div className="busqueda">
         <input
          value={ciudad}
-         onChange={(e) => consultarClima(e.target.value)}
-         onClick={consultarClima}
+         onChange={(e) => setCiudad(e.target.value)}
          placeholder="Ingresa una Ciudad"
          type="text" />
+         <button className="boton" onClick={consultarClima}>Buscar</button>
       </div>
       <section className="container">
         <div className="top">
           <div className="ubicacion">
-            <p>Tucumán</p>
+            <p>{dato.name}</p>
           </div>
           <div className="temperatura">
             <h1>25°C</h1>
